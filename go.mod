@@ -6,5 +6,5 @@ require (
 	github.com/gonejack/email v1.0.5
 	github.com/k3a/html2text v1.0.7
 	github.com/mvdan/xurls v1.1.0
-	github.com/spf13/cobra v1.1.3
+	github.com/spf13/cobra v1.2.1
 )
