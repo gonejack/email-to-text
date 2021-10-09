@@ -15,10 +15,7 @@ Convert email file to text file
 > email-to-text *.eml
 ```
 ```
-Usage:
-  email-links *.eml [flags]
-
 Flags:
-  -v, --verbose   verbose
-  -h, --help      help for email-links
+  -h, --help       Show context-sensitive help.
+      --verbose    Verbose printing.
 ```
