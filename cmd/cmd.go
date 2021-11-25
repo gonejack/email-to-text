@@ -3,7 +3,6 @@ package cmd
 import (
 	"bytes"
 	"fmt"
-	"io/ioutil"
 	"log"
 	"os"
 	"path/filepath"
@@ -62,7 +61,7 @@ func (c *EmailToText) run() error {
 			content = html2text.HTML2Text(string(mail.HTML))
 		}
 
-		err = ioutil.WriteFile(target, []byte(content), 0666)
+		err = os.WriteFile(target, []byte(content), 0666)
 		if err != nil {
 			return err
 		}
