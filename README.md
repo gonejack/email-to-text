@@ -1,5 +1,5 @@
 # email-to-text
-Convert email file to text file
+This commandline converts .eml to .txt files.
 
 ![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/gonejack/email-to-text)
 ![Build](https://github.com/gonejack/email-to-text/actions/workflows/go.yml/badge.svg)

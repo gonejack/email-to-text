@@ -4,7 +4,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/gonejack/email-to-text/cmd"
+	"github.com/gonejack/email-to-text/email2text"
 )
 
 func init() {
@@ -12,7 +12,10 @@ func init() {
 }
 
 func main() {
-	err := new(cmd.EmailToText).Run()
+	cmd := email2text.EmailToText{
+		Options: email2text.MustParseOptions(),
+	}
+	err := cmd.Run()
 	if err != nil {
 		log.Fatal(err)
 	}

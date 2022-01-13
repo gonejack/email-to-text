@@ -1,4 +1,4 @@
-package cmd
+package email2text
 
 import (
 	"bytes"
@@ -8,37 +8,24 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/alecthomas/kong"
 	"github.com/gonejack/email"
 	"github.com/k3a/html2text"
 )
 
-type options struct {
-	Verbose bool `help:"Verbose printing."`
-
-	Eml []string `arg:"" optional:""`
-}
-
 type EmailToText struct {
-	options
+	Options
 }
 
 func (c *EmailToText) Run() (err error) {
-	kong.Parse(&c.options,
-		kong.Name("email-to-text"),
-		kong.Description("Convert .eml to .txt"),
-		kong.UsageOnError(),
-	)
-	if len(c.Eml) == 0 {
-		c.Eml, _ = filepath.Glob("*.eml")
+	if c.About {
+		fmt.Println("Visit https://github.com/gonejack/email-to-text")
+		return
 	}
 	if len(c.Eml) == 0 {
-		return fmt.Errorf("no email given")
+		return fmt.Errorf("no .eml files given")
 	}
-
 	return c.run()
 }
-
 func (c *EmailToText) run() error {
 	for _, eml := range c.Eml {
 		if c.Verbose {
@@ -61,7 +48,7 @@ func (c *EmailToText) run() error {
 			content = html2text.HTML2Text(string(mail.HTML))
 		}
 
-		err = os.WriteFile(target, []byte(content), 0666)
+		err = os.WriteFile(target, []byte(content), 0766)
 		if err != nil {
 			return err
 		}
